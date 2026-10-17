@@ -151,4 +151,4 @@ def test_report_renders_counts_and_hallucination_column():
     text = render(payload)
     assert "## oracle" in text and "### grounding-none" in text
     assert "2/2 (100%)" in text
-    assert "cited paths that don't exist" in text
+    assert "cited files that don't exist" in text and "cited symbols not in graph" in text

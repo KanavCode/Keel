@@ -1,0 +1,1090 @@
+{
+ "meta": {
+  "keel_version": "0.1.0",
+  "date": "2026-10-17",
+  "models": [
+   "gemma-4-26b-a4b-it"
+  ],
+  "suites": [
+   "extract",
+   "tools"
+  ],
+  "limit": null,
+  "repeats": 1,
+  "backend": "GeminiBackend"
+ },
+ "records": [
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "contact",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 3.066,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "contact",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 19.273,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "contact",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.007,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "event",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.083,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "event",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.258,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "event",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.752,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "invoice",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.868,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "invoice",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.897,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "invoice",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 15.294,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "incident",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 3.361,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "incident",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.011,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "incident",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.82,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.733,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.027,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.014,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "recipe",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.874,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "recipe",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.11,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "recipe",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.907,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "address",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.305,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "address",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.82,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "address",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.382,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "actions",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 14.446,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "actions",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 13.995,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "actions",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 2.403,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "parcel",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.117,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "parcel",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 24.672,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "parcel",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.975,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "flight",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.622,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "flight",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.065,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "flight",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.956,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "settings",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.028,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "settings",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.813,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "settings",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.017,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "team",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 10.712,
+   "error": null,
+   "detail": {
+    "field_accuracy": 1.0
+   }
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "team",
+   "repeat": 0,
+   "valid": false,
+   "correct": false,
+   "calls": 0,
+   "latency_s": 0.0,
+   "error": "POST https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent failed: ConnectError: [Errno 11001] getaddrinfo failed",
+   "detail": {}
+  },
+  {
+   "suite": "extract",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "team",
+   "repeat": 0,
+   "valid": false,
+   "correct": false,
+   "calls": 0,
+   "latency_s": 0.0,
+   "error": "POST https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent failed: ConnectError: [Errno 11001] getaddrinfo failed",
+   "detail": {}
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "weather-f",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 7.462,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "weather-f",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.175,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "weather-f",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 6.229,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "fx-usd-inr",
+   "repeat": 0,
+   "valid": false,
+   "correct": false,
+   "calls": 0,
+   "latency_s": 0.0,
+   "error": "POST https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent failed: 500 {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+   "detail": {}
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "fx-usd-inr",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.699,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "fx-usd-inr",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.018,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "issues-react",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.951,
+   "error": null,
+   "detail": {
+    "tool": "search_issues"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "issues-react",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.121,
+   "error": null,
+   "detail": {
+    "tool": "search_issues"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "issues-react",
+   "repeat": 0,
+   "valid": false,
+   "correct": false,
+   "calls": 0,
+   "latency_s": 0.0,
+   "error": "POST https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent failed: 500 {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+   "detail": {}
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "event-review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 11.179,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "event-review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.804,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "event-review",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.012,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "slack-release",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.968,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "slack-release",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.119,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "slack-release",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.709,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "weather-c",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 26.434,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "weather-c",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 8.382,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "weather-c",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.035,
+   "error": null,
+   "detail": {
+    "tool": "get_weather"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "fx-eur-usd",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.251,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "fx-eur-usd",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.987,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "fx-eur-usd",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.846,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "issues-gfi",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.094,
+   "error": null,
+   "detail": {
+    "tool": "search_issues"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "issues-gfi",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 15.116,
+   "error": null,
+   "detail": {
+    "tool": "search_issues"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "issues-gfi",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 6.555,
+   "error": null,
+   "detail": {
+    "tool": "search_issues"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "sms-aman",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 3.527,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "sms-aman",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 9.79,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "sms-aman",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.981,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "event-demo",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.241,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "event-demo",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.886,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "event-demo",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.04,
+   "error": null,
+   "detail": {
+    "tool": "create_event"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "fx-gbp-eur",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.774,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "fx-gbp-eur",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 14.998,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "fx-gbp-eur",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.194,
+   "error": null,
+   "detail": {
+    "tool": "convert_currency"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "raw",
+   "task_id": "email-priya",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 9.828,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "extract",
+   "task_id": "email-priya",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 5.334,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  },
+  {
+   "suite": "tools",
+   "model": "gemma-4-26b-a4b-it",
+   "mode": "keel",
+   "task_id": "email-priya",
+   "repeat": 0,
+   "valid": true,
+   "correct": true,
+   "calls": 1,
+   "latency_s": 4.683,
+   "error": null,
+   "detail": {
+    "tool": "send_message"
+   }
+  }
+ ]
+}

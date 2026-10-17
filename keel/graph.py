@@ -17,6 +17,9 @@ DEPENDENCY_RELATIONS = frozenset(
     {"calls", "indirect_call", "imports", "imports_from", "uses", "inherits", "references", "re_exports"}
 )
 
+# What "this change may break that" means for the ripple estimate in `keel plan`.
+RIPPLE_RELATIONS = frozenset({"calls", "indirect_call", "inherits", "uses"})
+
 CHANGE_PLAN_SCHEMA: dict = {
     "type": "object",
     "properties": {
@@ -67,7 +70,7 @@ class CodeGraph:
         self._dependents: dict[str, list[str]] = defaultdict(list)
         for edge in links:
             if edge.get("relation") in DEPENDENCY_RELATIONS:
-                self._dependents[edge["target"]].append(edge["source"])
+                self._dependents[edge["target"]].append((edge["source"], edge["relation"]))
         self._files = {n["source_file"] for n in nodes if n.get("source_file")}
 
     @classmethod
@@ -99,7 +102,9 @@ class CodeGraph:
             and (want_file is None or n.get("source_file") == want_file)
         ]
 
-    def dependents(self, node_id: str, depth: int = 2) -> list[tuple[dict, int]]:
+    def dependents(
+        self, node_id: str, depth: int = 2, relations: frozenset[str] | None = None
+    ) -> list[tuple[dict, int]]:
         """Everything that transitively depends on `node_id`, nearest first, with distance."""
         seen = {node_id}
         queue: deque[tuple[str, int]] = deque([(node_id, 0)])
@@ -108,8 +113,8 @@ class CodeGraph:
             current, dist = queue.popleft()
             if dist == depth:
                 continue
-            for src in self._dependents.get(current, ()):
-                if src in seen or src not in self.nodes:
+            for src, relation in self._dependents.get(current, ()):
+                if src in seen or src not in self.nodes or (relations and relation not in relations):
                     continue
                 seen.add(src)
                 out.append((self.nodes[src], dist + 1))
@@ -129,6 +134,26 @@ class CodeGraph:
             "affected": sorted(affected.values(), key=lambda a: (a["distance"], a["file"] or "", a["label"])),
             "affected_files": sorted({a["file"] for a in affected.values() if a["file"]}),
         }
+
+    def ripple(self, path: str, symbols: list[str] | None = None, depth: int = 2) -> list[str]:
+        """Other code files that call, inherit from or use `path` (just `symbols` if given).
+
+        Deliberately narrower than blast_radius: module imports and doc references link nearly
+        every file to every other, which on a real repo (psf/requests) flagged 17 files for one
+        change. Following only calls/inherits/uses finds the 2 that matter.
+        """
+        path = normalize_path(path)
+        seeds: list[dict] = []
+        for symbol in symbols or []:
+            seeds += self.find(symbol, file=path)
+        if not seeds:
+            seeds = [n for n in self.nodes.values() if n.get("source_file") == path and _is_symbol(n)]
+        affected: set[str] = set()
+        for node in seeds:
+            for dep, _ in self.dependents(node["id"], depth, RIPPLE_RELATIONS):
+                if dep.get("source_file") and dep["source_file"] != path and dep.get("file_type") == "code":
+                    affected.add(dep["source_file"])
+        return sorted(affected)
 
     def suggest_files(self, path: str, n: int = 3) -> list[str]:
         return difflib.get_close_matches(normalize_path(path), self._files, n=n, cutoff=0.5)
@@ -157,8 +182,13 @@ def _did_you_mean(hints: list[str]) -> str:
     return f" (did you mean {', '.join(repr(h) for h in hints)}?)" if hints else ""
 
 
-def check_plan(graph: CodeGraph, plan: Any, *, list_files: int = 30) -> PlanCheck:
-    """Count and describe every file or symbol in `plan` that does not exist in `graph`."""
+def check_plan(graph: CodeGraph, plan: Any, *, list_files: int = 30, strict_symbols: bool = True) -> PlanCheck:
+    """Count and describe every file or symbol in `plan` that does not exist in `graph`.
+
+    Graph nodes are functions, classes and methods; parameters, flags and variables are not nodes.
+    With strict_symbols=False a missing symbol is still counted but produces no message, so it is
+    not treated as an error (use this when an unverifiable symbol should not block a plan).
+    """
     check = PlanCheck()
     for item in plan.get("files", []) if isinstance(plan, dict) else []:
         path = item["path"]
@@ -173,9 +203,10 @@ def check_plan(graph: CodeGraph, plan: Any, *, list_files: int = 30) -> PlanChec
             check.total_symbols += 1
             if not graph.find(symbol, file=path):
                 check.bad_symbols += 1
-                check.messages.append(
-                    f"symbol {symbol!r} is not defined in {path!r}{_did_you_mean(graph.suggest_symbols(symbol))}"
-                )
+                if strict_symbols:
+                    check.messages.append(
+                        f"symbol {symbol!r} is not defined in {path!r}{_did_you_mean(graph.suggest_symbols(symbol))}"
+                    )
     check.messages = check.messages[:5]
     if check.bad_paths:
         shown = sorted(graph.files())[:list_files]
@@ -183,10 +214,10 @@ def check_plan(graph: CodeGraph, plan: Any, *, list_files: int = 30) -> PlanChec
     return check
 
 
-def grounded_plan_verifier(graph: CodeGraph) -> Verifier:
-    """Verify a CHANGE_PLAN_SCHEMA value only cites files and symbols that exist in the graph."""
+def grounded_plan_verifier(graph: CodeGraph, *, strict_symbols: bool = True) -> Verifier:
+    """Verify a CHANGE_PLAN_SCHEMA value only cites files (and, if strict, symbols) that exist in the graph."""
 
     def verify(plan: Any) -> str | None:
-        return "; ".join(check_plan(graph, plan).messages) or None
+        return "; ".join(check_plan(graph, plan, strict_symbols=strict_symbols).messages) or None
 
     return verify

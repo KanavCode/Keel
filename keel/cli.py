@@ -10,6 +10,7 @@ from pathlib import Path
 
 from .client import DEFAULT_GEMINI_MODEL, BackendError, backend_from_env
 from .env import load_dotenv
+from .graphify import GraphifyError
 from .harness import structured
 
 _PING_SCHEMA = {
@@ -66,6 +67,28 @@ def _ask(args: argparse.Namespace) -> int:
         return 1
     print(json.dumps(result.value, indent=2, ensure_ascii=False))
     return 0
+
+
+def _plan(args: argparse.Namespace) -> int:
+    from dataclasses import asdict
+
+    from .graphify import clone_repo
+    from .plan import plan_change, render_markdown
+
+    backend = backend_from_env(args.model)
+    if args.repo.startswith(("http://", "https://", "git@")):
+        repo = clone_repo(args.repo, Path.home() / ".keel" / "repos")
+    else:
+        repo = Path(args.repo).resolve()
+    report = plan_change(backend, repo, args.issue, rebuild=not args.no_rebuild)
+    if args.json:
+        data = asdict(report)
+        data["ripple_files"], data["risk"] = report.ripple_files, report.risk
+        data.pop("attempts")
+        print(json.dumps(data, indent=2))
+    else:
+        print(render_markdown(report))
+    return 0 if report.ok and report.grounded else 1
 
 
 def _bench_run(args: argparse.Namespace) -> int:
@@ -143,6 +166,14 @@ def main(argv: list[str] | None = None) -> int:
     ask.add_argument("--trace", action="store_true", help="print each attempt to stderr")
     ask.set_defaults(func=_ask)
 
+    plan = sub.add_parser("plan", help="graph-grounded change plan for an issue (needs Graphify)")
+    plan.add_argument("repo", help="local path or GitHub URL")
+    plan.add_argument("issue", help="the issue text")
+    plan.add_argument("--model")
+    plan.add_argument("--no-rebuild", action="store_true", help="reuse the repo's existing graphify-out/graph.json")
+    plan.add_argument("--json", action="store_true")
+    plan.set_defaults(func=_plan)
+
     bench = sub.add_parser("bench", help="raw model vs Keel on fixed task suites")
     bsub = bench.add_subparsers(dest="bench_cmd", required=True)
     run = bsub.add_parser("run", help="run the benchmark")
@@ -161,7 +192,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return args.func(args)
-    except BackendError as exc:
+    except (BackendError, GraphifyError) as exc:
         print(f"keel: {exc}", file=sys.stderr)
         return 2
 

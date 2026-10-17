@@ -42,6 +42,15 @@ def test_think_block_is_ignored():
     assert extract_json(text) == {"right": True}
 
 
+def test_think_tags_mentioned_inside_a_json_string_are_left_alone():
+    # Regression: stripping <think>...</think> mid-reply corrupted valid JSON found by the benchmark.
+    text = '{"summary": "strip <think>...</think> blocks", "files": [{"path": "a.py", "reason": "r"}]}'
+    assert extract_json(text) == {
+        "summary": "strip <think>...</think> blocks",
+        "files": [{"path": "a.py", "reason": "r"}],
+    }
+
+
 def test_multiple_candidates_are_all_yielded():
     assert list(iter_json('first {"a": 1} then {"b": 2}')) == [{"a": 1}, {"b": 2}]
 

@@ -1,0 +1,206 @@
+{
+  "bench/results/extract-tools-gemma-4-26b-a4b-it.json": {
+    "mtime": 1792219904.4880633,
+    "seen": 1792219918.9520907,
+    "ast_hash": "80262c59920c7c3c56dd130cac085cac",
+    "semantic_hash": ""
+  },
+  "keel/__init__.py": {
+    "mtime": 1792217613.167561,
+    "seen": 1792219918.9520907,
+    "ast_hash": "d05c674d135c6505561c067604764141",
+    "semantic_hash": ""
+  },
+  "keel/agent.py": {
+    "mtime": 1792217476.5372744,
+    "seen": 1792219918.9520907,
+    "ast_hash": "5d9ff0de86b0e0ecdc934e13b3d84b3f",
+    "semantic_hash": ""
+  },
+  "keel/bench/__init__.py": {
+    "mtime": 1792217555.40591,
+    "seen": 1792219918.9520907,
+    "ast_hash": "c27974bf31065a3712bbe6019672e53e",
+    "semantic_hash": ""
+  },
+  "keel/bench/common.py": {
+    "mtime": 1792217679.6242216,
+    "seen": 1792219918.9520907,
+    "ast_hash": "caa18027976b3500cb4d6e387c485fbe",
+    "semantic_hash": ""
+  },
+  "keel/bench/data/keel_graph.json": {
+    "mtime": 1792217630.1646326,
+    "seen": 1792219918.9520907,
+    "ast_hash": "a07d0fada136793b14928a2a2ee2f58d",
+    "semantic_hash": ""
+  },
+  "keel/bench/extract_suite.py": {
+    "mtime": 1792217557.5309658,
+    "seen": 1792219918.9520907,
+    "ast_hash": "bf727d4bd0e5cf55b5c9332d5f8355f2",
+    "semantic_hash": ""
+  },
+  "keel/bench/grounding_suite.py": {
+    "mtime": 1792219784.797531,
+    "seen": 1792219918.9520907,
+    "ast_hash": "6ef29db280e5cb67c8c2001a0e96fd89",
+    "semantic_hash": ""
+  },
+  "keel/bench/report.py": {
+    "mtime": 1792219787.914167,
+    "seen": 1792219918.9520907,
+    "ast_hash": "1131d58906f0d7011ee64bd1afe6bef3",
+    "semantic_hash": ""
+  },
+  "keel/bench/runner.py": {
+    "mtime": 1792217587.1006503,
+    "seen": 1792219918.9520907,
+    "ast_hash": "99207a4573dc02c49a94dd493427c76b",
+    "semantic_hash": ""
+  },
+  "keel/bench/tools_suite.py": {
+    "mtime": 1792217558.6279068,
+    "seen": 1792219918.9520907,
+    "ast_hash": "13f07b7be7f4676d6dcc7d88bc593a56",
+    "semantic_hash": ""
+  },
+  "keel/cli.py": {
+    "mtime": 1792218803.3675168,
+    "seen": 1792219918.9520907,
+    "ast_hash": "6374e35edb327a9ad3d56cb439bda78f",
+    "semantic_hash": ""
+  },
+  "keel/client.py": {
+    "mtime": 1792217454.0891194,
+    "seen": 1792219918.9520907,
+    "ast_hash": "a9b4bfc4a2e4444604840657b583b7b9",
+    "semantic_hash": ""
+  },
+  "keel/env.py": {
+    "mtime": 1792217452.9747312,
+    "seen": 1792219918.9520907,
+    "ast_hash": "ddf540c3e643c2004a2a712e29942548",
+    "semantic_hash": ""
+  },
+  "keel/extract.py": {
+    "mtime": 1792219756.9855447,
+    "seen": 1792219918.9520907,
+    "ast_hash": "a6118c0d0adb22ab31aca90d92f41edd",
+    "semantic_hash": ""
+  },
+  "keel/graph.py": {
+    "mtime": 1792219868.6019034,
+    "seen": 1792219918.9520907,
+    "ast_hash": "b9ffdb20b77612d59a6b81432f5eef31",
+    "semantic_hash": ""
+  },
+  "keel/graphify.py": {
+    "mtime": 1792218777.729054,
+    "seen": 1792219918.9520907,
+    "ast_hash": "02eab9a33fb682050b374abb7a73aab5",
+    "semantic_hash": ""
+  },
+  "keel/harness.py": {
+    "mtime": 1792217456.329815,
+    "seen": 1792219918.9520907,
+    "ast_hash": "3e4195c3b2f0ab536d61c7adabb51544",
+    "semantic_hash": ""
+  },
+  "keel/plan.py": {
+    "mtime": 1792219802.2683015,
+    "seen": 1792219918.9520907,
+    "ast_hash": "f94510d0b34a5585c5400491a8e84a2e",
+    "semantic_hash": ""
+  },
+  "pyproject.toml": {
+    "mtime": 1792218804.4499502,
+    "seen": 1792219918.9520907,
+    "ast_hash": "48150eeb55bbed6b42756874ea643197",
+    "semantic_hash": ""
+  },
+  "tests/conftest.py": {
+    "mtime": 1792039653.530445,
+    "seen": 1792219918.9520907,
+    "ast_hash": "dadd86172ce5b9cf467afc9373b20b6b",
+    "semantic_hash": ""
+  },
+  "tests/test_agent.py": {
+    "mtime": 1792039656.6498933,
+    "seen": 1792219918.9520907,
+    "ast_hash": "f2444edc78f43155406a7f7696ec3660",
+    "semantic_hash": ""
+  },
+  "tests/test_bench.py": {
+    "mtime": 1792219810.7149096,
+    "seen": 1792219918.9520907,
+    "ast_hash": "b4ea5082eb6b11ed63073c6a04511226",
+    "semantic_hash": ""
+  },
+  "tests/test_client.py": {
+    "mtime": 1792217670.5624974,
+    "seen": 1792219918.9520907,
+    "ast_hash": "911e2029897a784b5ea6a55877625962",
+    "semantic_hash": ""
+  },
+  "tests/test_extract.py": {
+    "mtime": 1792219758.0238802,
+    "seen": 1792219918.9520907,
+    "ast_hash": "e22a3f556041ab4766cf660870114b41",
+    "semantic_hash": ""
+  },
+  "tests/test_graph.py": {
+    "mtime": 1792216876.4898372,
+    "seen": 1792219918.9520907,
+    "ast_hash": "90786dd4e4bb454184db11ea54d9e373",
+    "semantic_hash": ""
+  },
+  "tests/test_harness.py": {
+    "mtime": 1792039655.61282,
+    "seen": 1792219918.9520907,
+    "ast_hash": "04b2da083c3751c6d3a15aef6e80449f",
+    "semantic_hash": ""
+  },
+  "tests/test_plan.py": {
+    "mtime": 1792219869.6342204,
+    "seen": 1792219918.9520907,
+    "ast_hash": "fd632ae66963df8f3f300b8d4261a141",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792217736.3634565,
+    "seen": 1792219918.9520907,
+    "ast_hash": "aa5b91c67a353bc09060bf7819a7e075",
+    "semantic_hash": ""
+  },
+  "bench/results/extract-tools-gemma-4-26b-a4b-it.md": {
+    "mtime": 1792219904.4890826,
+    "seen": 1792219918.9520907,
+    "ast_hash": "3b1789cf1e7321d5d75787c60fa4c724",
+    "semantic_hash": ""
+  },
+  "docs/PLAN.md": {
+    "mtime": 1792217744.6686664,
+    "seen": 1792219918.9520907,
+    "ast_hash": "1271f85e62f4e8f5abf97e8ead7df2a3",
+    "semantic_hash": ""
+  },
+  "docs/demo-requests.md": {
+    "mtime": 1792219891.0973084,
+    "seen": 1792219918.9520907,
+    "ast_hash": "b8167a76ebe7794f7c74f01ba689db23",
+    "semantic_hash": ""
+  },
+  "skills/keel-plan-change/SKILL.md": {
+    "mtime": 1792218842.1828046,
+    "seen": 1792219918.9520907,
+    "ast_hash": "023362d7ae6218ea69f54868a35f30f8",
+    "semantic_hash": ""
+  },
+  "skills/keel-structured-output/SKILL.md": {
+    "mtime": 1792217738.4246323,
+    "seen": 1792219918.9520907,
+    "ast_hash": "9da5670b73dc2b76af16f46199944aa0",
+    "semantic_hash": ""
+  }
+}

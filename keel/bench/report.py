@@ -46,18 +46,23 @@ def render(payload: dict) -> str:
                 if suite.startswith("grounding"):
                     d = [r["detail"] for r in ok if r["detail"].get("valid")]
                     bad, total = sum(x["bad_paths"] for x in d), sum(x["total_paths"] for x in d)
-                    row.insert(3, _frac(bad, total))
+                    sbad, stotal = sum(x["bad_symbols"] for x in d), sum(x["total_symbols"] for x in d)
+                    row[3:3] = [_frac(bad, total), _frac(sbad, stotal)]
                 rows.append(row)
             if not rows:
                 continue
             grounding = suite.startswith("grounding")
-            head = ["mode", "valid JSON", "correct"] + (["cited paths that don't exist"] if grounding else []) + ["avg calls", "median latency", "errors"]
+            extra = ["cited files that don't exist", "cited symbols not in graph*"] if grounding else []
+            head = ["mode", "valid JSON", "correct"] + extra + ["avg calls", "median latency", "errors"]
             lines += [f"### {suite}", "", "| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
             lines += ["| " + " | ".join(r) + " |" for r in rows]
             lines.append("")
     lines += [
         "`correct` means: extract = every field matches the gold answer; tools = right tool and every pinned "
-        "argument; grounding = valid plan, every cited file and symbol exists, and at least half of the gold files are cited.",
+        "argument; grounding = valid plan, every cited file exists, and at least half of the gold files are cited.",
+        "",
+        "\\* Graph nodes are functions, classes and methods, so a legitimate mention of a parameter or flag counts "
+        "as a miss here. This column is informational and is not part of `correct`.",
         "",
     ]
     return "\n".join(lines)

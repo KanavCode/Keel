@@ -7,7 +7,9 @@ import json
 import re
 from typing import Any, Iterator
 
-_THINK = re.compile(r"<think>.*?</think>", re.S | re.I)
+# Reasoning models put their thinking first. Strip only a LEADING block: a reply that merely
+# mentions <think>...</think> inside a JSON string must not be cut in half.
+_THINK = re.compile(r"\A\s*<think>.*?</think>", re.S | re.I)
 _FENCE = re.compile(r"```[a-zA-Z0-9_-]*\s*(.*?)```", re.S)
 _TRAILING_COMMA = re.compile(r",\s*([}\]])")
 _SMART_QUOTES = str.maketrans({"“": '"', "”": '"', "‘": "'", "’": "'"})

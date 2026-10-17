@@ -2,7 +2,12 @@
 
 The repository under test is Keel itself, mapped by Graphify (keel/bench/data/keel_graph.json).
 Two contexts: "none" (the model only knows the issue, like an agent without a repo map) and
-"files" (the model is given the file list). `grounded` means every cited file and symbol exists.
+"files" (the model is given the file list). `grounded` means every cited FILE exists.
+
+Cited symbols are checked too and reported separately. Graph nodes are functions, classes and
+methods, so a legitimate mention of a parameter or flag counts as a miss. An earlier run counted
+those as errors; error analysis showed they were false positives, so file grounding is the headline
+metric and symbol misses are shown on the side.
 """
 
 from __future__ import annotations
@@ -76,7 +81,8 @@ def score(value: Any, task: IssueTask, graph: CodeGraph) -> dict:
     recall = len(cited & set(task.gold_files)) / len(task.gold_files)
     return {
         "valid": True,
-        "grounded": check.grounded,
+        "grounded": check.bad_paths == 0,  # every cited FILE exists; symbols are reported separately
+        "strict_grounded": check.grounded,  # files and symbols (parameters/flags are not graph nodes)
         "recall": round(recall, 3),
         "bad_paths": check.bad_paths,
         "total_paths": check.total_paths,
@@ -90,7 +96,7 @@ def run_task(backend, mode: str, task: IssueTask, context: str) -> Outcome:
     graph = load_graph()
     prompt = build_prompt(task, context, graph)
     value, calls, latency = run_mode(
-        backend, mode, prompt, CHANGE_PLAN_SCHEMA, verify=grounded_plan_verifier(graph)
+        backend, mode, prompt, CHANGE_PLAN_SCHEMA, verify=grounded_plan_verifier(graph, strict_symbols=False)
     )
     detail = score(value, task, graph)
     correct = detail["grounded"] and detail["recall"] >= 0.5
