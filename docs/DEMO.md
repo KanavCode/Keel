@@ -34,6 +34,18 @@ The command:
 keel plan https://github.com/psf/requests "Add a default timeout setting on Session so users do not have to pass timeout= on every request" --compare
 ```
 
+## Backup prompts (tested on psf/requests, 2026-10-17)
+
+Run each as `keel plan https://github.com/psf/requests "<prompt>" --compare`.
+
+| Prompt | Time | Why use it |
+|---|---|---|
+| Add a built-in option to retry failed requests with exponential backoff | 18 s | Best opener: the unguided call cited 5 TypeScript files (`src/client.ts`...) for a Python repo, all invented |
+| Add a method on Response that saves the body to a file on disk | 40 s | Shows the ripple warning meaning something: `Response` is central, so risk came out high (8 dependent files). Slower, start early |
+
+If the audience suggests their own: keep it specific and about something that exists in the repo. A different
+repository is risky live (first run clones it and builds the graph). Only Python repos have been tested.
+
 ## If something fails
 
 - **API or network down, or rate-limited:** open `docs/demo-compare-requests.md` and narrate the saved real output ("this is a real run from earlier today").
