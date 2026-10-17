@@ -62,6 +62,15 @@ def test_find_matches_graphify_label_shapes_and_skips_docstring_nodes():
     assert GRAPH.find("The core loop: generate then repair.") == []
 
 
+def test_find_understands_qualified_names():
+    # Regression: models write "Agent.run" or "agent.run", the graph stores class "Agent" and method ".run()".
+    assert GRAPH.find("Agent.run", file="keel/agent.py")[0]["id"] == "agent_method"
+    assert GRAPH.find("agent.run", file="keel/agent.py")[0]["id"] == "agent_method"  # module qualifier
+    assert GRAPH.find("keel.agent.Agent.run")[0]["id"] == "agent_method"
+    assert GRAPH.find("Nonexistent.run", file="keel/agent.py") == []
+    assert GRAPH.find("Agent.missing", file="keel/agent.py") == []
+
+
 def test_blast_radius_respects_depth_and_ignores_structural_edges():
     result = GRAPH.blast_radius("iter_json", depth=1)
     assert result["affected_files"] == ["keel/harness.py"]

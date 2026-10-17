@@ -55,7 +55,7 @@ def test_ripple_lists_dependents_outside_the_file():
 
 
 def test_ripple_ignores_imports_and_docs():
-    # Regression: on psf/requests, following imports and doc references flagged 17 files for one change.
+    # Regression: on psf/requests, following imports and doc references flagged 15 unrelated files.
     data = {
         "nodes": GRAPH["nodes"]
         + [

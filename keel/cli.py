@@ -91,6 +91,27 @@ def _plan(args: argparse.Namespace) -> int:
     return 0 if report.ok and report.grounded else 1
 
 
+def _triage(args: argparse.Namespace) -> int:
+    from .graphify import clone_repo
+    from .triage import fetch_issues, parse_repo, render_table, triage
+
+    owner, name = parse_repo(args.repo)
+    issues = fetch_issues(owner, name, args.label, args.limit)
+    if not issues:
+        print(f"keel: no open issues labelled {args.label!r} in {owner}/{name}", file=sys.stderr)
+        return 1
+    backend = backend_from_env(args.model)
+    repo = clone_repo(f"https://github.com/{owner}/{name}", Path.home() / ".keel" / "repos")
+
+    def progress(row) -> None:
+        print(f"  planned #{row.issue.number}: {row.report.calls} call(s)", file=sys.stderr)
+
+    rows = triage(backend, repo, issues, on_row=progress)
+    print(f"## Issues in {owner}/{name} labelled '{args.label}', smallest ripple first\n")
+    print(render_table(rows))
+    return 0
+
+
 def _bench_run(args: argparse.Namespace) -> int:
     from .bench import runner
 
@@ -111,26 +132,32 @@ def _bench_run(args: argparse.Namespace) -> int:
     if args.dry_run:
         return 0
 
+    from .bench.report import render
+
+    backend_kind = type(backend_from_env(models[0])).__name__  # fail fast on a missing key
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    records: list = []
+
+    def save() -> None:
+        payload = runner.results_payload(
+            records, models=models, suites=suites, limit=args.limit, repeats=args.repeats, backend_kind=backend_kind
+        )
+        out.write_text(json.dumps(payload, indent=1), encoding="utf-8")
+        out.with_suffix(".md").write_text(render(payload), encoding="utf-8")
+
     def progress(rec) -> None:
+        records.append(rec)
+        save()  # after every record, so an interrupted run keeps everything it measured
         mark = "ERR" if rec.error else ("ok " if rec.correct else "bad")
         print(f"  [{rec.model}] {rec.suite:<16} {rec.task_id:<16} {rec.mode:<8} {mark} calls={rec.calls}", file=sys.stderr)
 
-    backend_kind = type(backend_from_env(models[0])).__name__  # fail fast on a missing key
-    records = runner.run_bench(
-        models, suites, lambda m: backend_from_env(m), limit=args.limit, repeats=args.repeats, on_record=progress
-    )
-    payload = runner.results_payload(
-        records, models=models, suites=suites, limit=args.limit, repeats=args.repeats, backend_kind=backend_kind
-    )
-    out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(payload, indent=1), encoding="utf-8")
-    print(f"saved {len(records)} records to {out}")
-    from .bench.report import render
-
-    report = out.with_suffix(".md")
-    report.write_text(render(payload), encoding="utf-8")
-    print(f"report: {report}")
+    try:
+        runner.run_bench(
+            models, suites, lambda m: backend_from_env(m), limit=args.limit, repeats=args.repeats, on_record=progress
+        )
+    finally:
+        print(f"saved {len(records)} records to {out} (report: {out.with_suffix('.md')})")
     return 0
 
 
@@ -173,6 +200,13 @@ def main(argv: list[str] | None = None) -> int:
     plan.add_argument("--no-rebuild", action="store_true", help="reuse the repo's existing graphify-out/graph.json")
     plan.add_argument("--json", action="store_true")
     plan.set_defaults(func=_plan)
+
+    tri = sub.add_parser("triage", help="rank a GitHub repo's labelled issues by how small the change looks")
+    tri.add_argument("repo", help="GitHub URL")
+    tri.add_argument("--label", default="good first issue")
+    tri.add_argument("--limit", type=int, default=5)
+    tri.add_argument("--model")
+    tri.set_defaults(func=_triage)
 
     bench = sub.add_parser("bench", help="raw model vs Keel on fixed task suites")
     bsub = bench.add_subparsers(dest="bench_cmd", required=True)

@@ -7,10 +7,7 @@
   "5": "keel/__init__.py",
   "6": "cli.py",
   "7": "Keel",
-  "8": "ScriptedBackend",
-  "9": "Plan a change with Keel and Graphify",
-  "10": "gemma-4-26b-a4b-it",
-  "11": "Keel build plan",
-  "12": "Plan: Add a default timeout setting on Session so users do not have to pass timeout= on every request",
+  "8": ".claude/CLAUDE.md",
+  "11": "Keel build notes",
   "13": "keel-harness"
 }

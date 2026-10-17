@@ -91,16 +91,38 @@ class CodeGraph:
         return normalize_path(path) in self._files
 
     def find(self, name: str, file: str | None = None) -> list[dict]:
-        """Nodes whose label matches `name` (case-insensitive), optionally within one file."""
+        """Nodes whose label matches `name` (case-insensitive), optionally within one file.
+
+        Qualified names such as `Agent.run` or `client.send` match the member (`.run()`) when the
+        qualifier is a symbol defined in the same file or the file's own module name.
+        """
         want = canonical_symbol(name)
+        qualifier = None
+        if "." in want:
+            head, _, want = want.rpartition(".")
+            qualifier = head.rpartition(".")[2]
         want_file = normalize_path(file) if file else None
-        return [
+        found = [
             n
             for n in self.nodes.values()
             if _is_symbol(n)
             and canonical_symbol(n["label"]) == want
             and (want_file is None or n.get("source_file") == want_file)
         ]
+        if qualifier:
+            found = [n for n in found if self._qualifies(n.get("source_file"), qualifier)]
+        return found
+
+    def _qualifies(self, source_file: str | None, qualifier: str) -> bool:
+        if not source_file:
+            return False
+        if Path(source_file).stem.lower() == qualifier:
+            return True
+        return any(
+            canonical_symbol(n["label"]) == qualifier
+            for n in self.nodes.values()
+            if n.get("source_file") == source_file and _is_symbol(n)
+        )
 
     def dependents(
         self, node_id: str, depth: int = 2, relations: frozenset[str] | None = None
@@ -139,8 +161,8 @@ class CodeGraph:
         """Other code files that call, inherit from or use `path` (just `symbols` if given).
 
         Deliberately narrower than blast_radius: module imports and doc references link nearly
-        every file to every other, which on a real repo (psf/requests) flagged 17 files for one
-        change. Following only calls/inherits/uses finds the 2 that matter.
+        every file to every other, which on a real repo (psf/requests) flagged 15 unrelated files
+        for one change. Following only calls/inherits/uses finds the 1 that matters.
         """
         path = normalize_path(path)
         seeds: list[dict] = []

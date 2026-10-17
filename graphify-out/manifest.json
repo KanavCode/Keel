@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "keel/cli.py": {
-    "mtime": 1792218803.3675168,
-    "seen": 1792219918.9520907,
-    "ast_hash": "6374e35edb327a9ad3d56cb439bda78f",
+    "mtime": 1792223399.0475793,
+    "seen": 1792224315.612103,
+    "ast_hash": "d4db08bda97c9f78f5cb7ac62ed16aad",
     "semantic_hash": ""
   },
   "keel/client.py": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "keel/graph.py": {
-    "mtime": 1792219868.6019034,
-    "seen": 1792219918.9520907,
-    "ast_hash": "b9ffdb20b77612d59a6b81432f5eef31",
+    "mtime": 1792224170.7052011,
+    "seen": 1792224315.612103,
+    "ast_hash": "e88c0a42cee2e9c189cf206e0517a1c8",
     "semantic_hash": ""
   },
   "keel/graphify.py": {
@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "tests/test_graph.py": {
-    "mtime": 1792216876.4898372,
-    "seen": 1792219918.9520907,
-    "ast_hash": "90786dd4e4bb454184db11ea54d9e373",
+    "mtime": 1792224171.780595,
+    "seen": 1792224315.612103,
+    "ast_hash": "e140c11590fcc4e665a7fc991f5ce745",
     "semantic_hash": ""
   },
   "tests/test_harness.py": {
@@ -162,15 +162,15 @@
     "semantic_hash": ""
   },
   "tests/test_plan.py": {
-    "mtime": 1792219869.6342204,
-    "seen": 1792219918.9520907,
-    "ast_hash": "fd632ae66963df8f3f300b8d4261a141",
+    "mtime": 1792220095.7196732,
+    "seen": 1792224315.612103,
+    "ast_hash": "e9b7b35f627e1d02897781c672a812b3",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792217736.3634565,
-    "seen": 1792219918.9520907,
-    "ast_hash": "aa5b91c67a353bc09060bf7819a7e075",
+    "mtime": 1792224294.5632396,
+    "seen": 1792224315.612103,
+    "ast_hash": "7a046e3ee6ab8e0d7573e0002177f32d",
     "semantic_hash": ""
   },
   "bench/results/extract-tools-gemma-4-26b-a4b-it.md": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1792217744.6686664,
-    "seen": 1792219918.9520907,
-    "ast_hash": "1271f85e62f4e8f5abf97e8ead7df2a3",
+    "mtime": 1792224295.6187944,
+    "seen": 1792224315.612103,
+    "ast_hash": "bb91267392c1bab4642deb3c12202853",
     "semantic_hash": ""
   },
   "docs/demo-requests.md": {
@@ -201,6 +201,54 @@
     "mtime": 1792217738.4246323,
     "seen": 1792219918.9520907,
     "ast_hash": "9da5670b73dc2b76af16f46199944aa0",
+    "semantic_hash": ""
+  },
+  ".claude/settings.json": {
+    "mtime": 1792219925.9501421,
+    "seen": 1792224315.612103,
+    "ast_hash": "3ac995fbf93552a991ecab9b63f776aa",
+    "semantic_hash": ""
+  },
+  "bench/results/grounding-gemma-4-26b-a4b-it.json": {
+    "mtime": 1792224145.5914724,
+    "seen": 1792224315.612103,
+    "ast_hash": "f8a6feb8f76b35b12c3476b199651861",
+    "semantic_hash": ""
+  },
+  "keel/triage.py": {
+    "mtime": 1792220051.2819686,
+    "seen": 1792224315.612103,
+    "ast_hash": "6b7114fbc1f9b1ac69ce04a7be42e1be",
+    "semantic_hash": ""
+  },
+  "tests/test_triage.py": {
+    "mtime": 1792219998.552638,
+    "seen": 1792224315.612103,
+    "ast_hash": "17dc5edb4f687aa2775512d8a6d9101a",
+    "semantic_hash": ""
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1792219925.9491334,
+    "seen": 1792224315.612103,
+    "ast_hash": "9b31786b637be3c13978bec4c2330752",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1792219925.9491334,
+    "seen": 1792224315.612103,
+    "ast_hash": "67d88e9d0760c3ba54c75dfd9551c1c5",
+    "semantic_hash": ""
+  },
+  "bench/results/grounding-gemma-4-26b-a4b-it.md": {
+    "mtime": 1792224145.5924652,
+    "seen": 1792224315.612103,
+    "ast_hash": "8eca0df5f9fa8a87b3bf54579e6a3a6c",
+    "semantic_hash": ""
+  },
+  "docs/demo-triage-poetry.md": {
+    "mtime": 1792224264.673931,
+    "seen": 1792224315.612103,
+    "ast_hash": "b87c4d66da370348565020fdb68d6998",
     "semantic_hash": ""
   }
 }
