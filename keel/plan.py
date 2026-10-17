@@ -88,6 +88,42 @@ def plan_change(
     return report
 
 
+@dataclass
+class UnguidedPlan:
+    """One plain model call with no repo context, checked against the graph afterwards."""
+
+    ok: bool
+    files: list[tuple[str, bool]] = field(default_factory=list)  # (cited path, exists in the graph)
+
+    @property
+    def invented(self) -> int:
+        return sum(1 for _, exists in self.files if not exists)
+
+
+def unguided_plan(backend: Backend, graph_path: Path, issue: str) -> UnguidedPlan:
+    """What a model does without Keel: one call, no repo map, no checking. For side-by-side demos."""
+    graph = CodeGraph.load(graph_path)
+    prompt = (
+        f"Issue: {issue}\n\nYou have not been shown the repository. Plan the change. List every file that "
+        "must be modified (path relative to the repository root), why, and the key functions involved."
+    )
+    result = structured(backend, prompt, CHANGE_PLAN_SCHEMA, max_attempts=1, max_tokens=2048)
+    items = result.value.get("files") if isinstance(result.value, dict) else None
+    if not isinstance(items, list):
+        return UnguidedPlan(False)
+    paths = [i["path"] for i in items if isinstance(i, dict) and isinstance(i.get("path"), str)]
+    return UnguidedPlan(bool(paths), [(p, graph.has_file(p)) for p in paths])
+
+
+def render_unguided(plan: UnguidedPlan) -> str:
+    if not plan.files:
+        return "### Without Keel (one unguided call)\n\nThe model did not produce a usable plan.\n"
+    lines = ["### Without Keel (one unguided call)", ""]
+    lines += [f"- {'✓' if exists else '✗'} `{path}`" + ("" if exists else "  (does not exist in this repo)") for path, exists in plan.files]
+    lines += ["", f"**{plan.invented} of {len(plan.files)} cited files do not exist.**", ""]
+    return "\n".join(lines)
+
+
 def render_markdown(report: PlanReport) -> str:
     lines = [f"## Plan: {report.issue}", ""]
     if not report.files:

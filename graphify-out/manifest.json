@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "keel/cli.py": {
-    "mtime": 1792223399.0475793,
-    "seen": 1792224315.612103,
-    "ast_hash": "d4db08bda97c9f78f5cb7ac62ed16aad",
+    "mtime": 1792224693.528675,
+    "seen": 1792224776.186751,
+    "ast_hash": "e4afaba8168e410de2a58b6e5d7446d3",
     "semantic_hash": ""
   },
   "keel/client.py": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "keel/plan.py": {
-    "mtime": 1792219802.2683015,
-    "seen": 1792219918.9520907,
-    "ast_hash": "f94510d0b34a5585c5400491a8e84a2e",
+    "mtime": 1792224674.9216425,
+    "seen": 1792224776.186751,
+    "ast_hash": "fe3778987ba6594f0e5803067a485cd9",
     "semantic_hash": ""
   },
   "pyproject.toml": {
@@ -162,9 +162,9 @@
     "semantic_hash": ""
   },
   "tests/test_plan.py": {
-    "mtime": 1792220095.7196732,
-    "seen": 1792224315.612103,
-    "ast_hash": "e9b7b35f627e1d02897781c672a812b3",
+    "mtime": 1792224678.1331463,
+    "seen": 1792224776.186751,
+    "ast_hash": "993d2837ed8fd1bc30906463cd8f425f",
     "semantic_hash": ""
   },
   "README.md": {
@@ -249,6 +249,18 @@
     "mtime": 1792224264.673931,
     "seen": 1792224315.612103,
     "ast_hash": "b87c4d66da370348565020fdb68d6998",
+    "semantic_hash": ""
+  },
+  "docs/DEMO.md": {
+    "mtime": 1792224767.4973662,
+    "seen": 1792224776.186751,
+    "ast_hash": "8e55d40d00031f518a56bad64b0c0aa5",
+    "semantic_hash": ""
+  },
+  "docs/demo-compare-requests.md": {
+    "mtime": 1792224747.0169742,
+    "seen": 1792224776.186751,
+    "ast_hash": "50005fb1d2c82c3e08a785f6c42eb95e",
     "semantic_hash": ""
   }
 }

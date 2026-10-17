@@ -1,13 +1,22 @@
 {
   "0": "test_bench.py",
   "1": "client.py",
-  "2": "structured",
+  "2": "keel/__init__.py",
   "3": "CodeGraph",
   "4": "plan.py",
   "5": "keel/__init__.py",
   "6": "cli.py",
   "7": "Keel",
   "8": ".claude/CLAUDE.md",
+  "9": "Agent",
+  "10": "structured",
   "11": "Keel build notes",
-  "13": "keel-harness"
+  "12": "extract.py",
+  "13": "keel-harness",
+  "14": "_bench_run",
+  "15": "Demo guide (5 minutes)",
+  "16": "schema_errors",
+  "17": "ScriptedBackend",
+  "18": "demo-compare-requests.md",
+  "19": "Backend"
 }

@@ -80,7 +80,15 @@ def _plan(args: argparse.Namespace) -> int:
         repo = clone_repo(args.repo, Path.home() / ".keel" / "repos")
     else:
         repo = Path(args.repo).resolve()
-    report = plan_change(backend, repo, args.issue, rebuild=not args.no_rebuild)
+    graph_path = None
+    if args.compare:
+        from .graphify import build_graph
+        from .plan import render_unguided, unguided_plan
+
+        graph_path = build_graph(repo) if not args.no_rebuild else repo / "graphify-out" / "graph.json"
+        print(render_unguided(unguided_plan(backend, graph_path, args.issue)))
+        print("### With Keel (graph-grounded)\n")
+    report = plan_change(backend, repo, args.issue, graph_path=graph_path, rebuild=not args.no_rebuild)
     if args.json:
         data = asdict(report)
         data["ripple_files"], data["risk"] = report.ripple_files, report.risk
@@ -199,6 +207,7 @@ def main(argv: list[str] | None = None) -> int:
     plan.add_argument("--model")
     plan.add_argument("--no-rebuild", action="store_true", help="reuse the repo's existing graphify-out/graph.json")
     plan.add_argument("--json", action="store_true")
+    plan.add_argument("--compare", action="store_true", help="first show what one unguided call cites, checked against the graph")
     plan.set_defaults(func=_plan)
 
     tri = sub.add_parser("triage", help="rank a GitHub repo's labelled issues by how small the change looks")
@@ -224,6 +233,11 @@ def main(argv: list[str] | None = None) -> int:
     rep.set_defaults(func=_bench_report)
 
     args = parser.parse_args(argv)
+    for stream in (sys.stdout, sys.stderr):  # Windows consoles default to a legacy codepage; ✓ and ✗ must not crash
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     try:
         return args.func(args)
     except (BackendError, GraphifyError) as exc:

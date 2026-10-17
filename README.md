@@ -61,7 +61,12 @@ Graphify is central here, not decoration. It is used in five places:
 pip install -e ".[graph]"          # includes Graphify
 copy .env.example .env             # add GEMINI_API_KEY (free key: aistudio.google.com/apikey)
 keel plan <local-path-or-github-url> "<issue text>"
+keel plan <local-path-or-github-url> "<issue text>" --compare   # first shows what ONE unguided call cites, checked against the graph
 ```
+
+On `psf/requests`, the unguided call cited `session.py`, `adapter.py` and `tests/test_session.py`: none exist
+(the real file is `src/requests/sessions.py`). Real output: [docs/demo-compare-requests.md](docs/demo-compare-requests.md).
+Stage script: [docs/DEMO.md](docs/DEMO.md).
 
 ## keel triage (Hacktoberfest)
 

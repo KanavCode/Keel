@@ -105,6 +105,25 @@ def test_unverifiable_symbols_are_pruned_not_rejected(tmp_path, monkeypatch, scr
     assert "1 unverifiable symbol(s) left out" in render_markdown(report)
 
 
+def test_unguided_plan_marks_invented_files(tmp_path, scripted):
+    graph_path = tmp_path / "graph.json"
+    graph_path.write_text(json.dumps(GRAPH), encoding="utf-8")
+    plan = {"summary": "s", "files": [{"path": "pkg/client.py", "reason": "r"}, {"path": "src/made_up.py", "reason": "r"}]}
+    backend = scripted([json.dumps(plan)])
+    result = plan_mod.unguided_plan(backend, graph_path, "x")
+    assert result.files == [("pkg/client.py", True), ("src/made_up.py", False)] and result.invented == 1
+    assert len(backend.calls) == 1  # one unguided call, no repair
+    text = plan_mod.render_unguided(result)
+    assert "✓ `pkg/client.py`" in text and "✗ `src/made_up.py`" in text and "1 of 2 cited files do not exist" in text
+
+
+def test_unguided_plan_survives_garbage(tmp_path, scripted):
+    graph_path = tmp_path / "graph.json"
+    graph_path.write_text(json.dumps(GRAPH), encoding="utf-8")
+    result = plan_mod.unguided_plan(scripted(["no idea"]), graph_path, "x")
+    assert not result.ok and "did not produce a usable plan" in plan_mod.render_unguided(result)
+
+
 def test_plan_report_when_model_never_gives_a_plan(tmp_path, monkeypatch, scripted):
     graph_path = tmp_path / "graph.json"
     graph_path.write_text(json.dumps(GRAPH), encoding="utf-8")
